@@ -48,4 +48,9 @@ void addVehicle(struct Vehicle** head) {
     printf("New vehicle added successfully!\n");
 }
 
+//Hedije Jazaj
+void addReservation(){
+    printf("Not implemented");
+}
+
 #endif /* create.h */
