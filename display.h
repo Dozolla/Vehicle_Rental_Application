@@ -1,12 +1,13 @@
 #ifndef display_h
 #define display_h
-
+//Arlind Alliu
 void displayAllVehicles(struct Vehicle* head) {
-    printf("All Vehicles Information\n");
     if (head == NULL) {
         printf("No vehicles found.\n");
         return;
     }
+    else
+        printf("All Vehicles Information\n");
     
     int vehicleCount = 0;
     struct Vehicle* current = head;

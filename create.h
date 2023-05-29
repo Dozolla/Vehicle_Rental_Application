@@ -1,6 +1,7 @@
 #ifndef create_h
 #define create_h
-void addVehicle(struct Vehicle** head) {
+//Arlind Alliu
+void addVehicle(struct Vehicle** head, struct Vehicle** tail) {
     // Create a new vehicle node
     struct Vehicle* newVehicle = (struct Vehicle*)malloc(sizeof(struct Vehicle));
     
@@ -27,6 +28,9 @@ void addVehicle(struct Vehicle** head) {
     
     printf("Enter the number of seats: ");
     scanf("%d", &(newVehicle->seats));
+
+    printf("Enter the color: ");
+    scanf("%s", newVehicle->color);
     
     printf("Enter the price: ");
     scanf("%f", &(newVehicle->price));

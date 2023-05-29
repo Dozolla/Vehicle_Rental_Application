@@ -20,7 +20,7 @@ void displayClientToFile(struct Client **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%s,%s,%s,%s,%s", curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber);
+        fprintf(outfile, "%d,%s,%s,%s,%s,%s\n", curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -86,7 +86,7 @@ void displayVehicleToFile(struct Vehicle **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%d,%s,%s,%s,%f,%d,%f", curr->plate_number, curr->year, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price);
+        fprintf(outfile, "%d,%d,%s,%s,%s,%f,%d,%f\n", curr->plate_number, curr->year, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -152,7 +152,7 @@ void displayReservationToFile(struct Reservation **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%s,%d,%d,%f", curr->ID, curr->date, curr->client_ID, curr->days, curr->price);
+        fprintf(outfile, "%d,%s,%d,%d,%f\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price);
         printf("Added to file.\n");
         curr = curr->next;
     }

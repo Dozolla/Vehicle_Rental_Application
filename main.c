@@ -20,8 +20,8 @@ int main(){
     int vcnt=0,ccnt=0,rcnt=0;
 
     printf("Welcome to the Car Rental System!\n");
-    //int n;
-    //scanf("%d", &n);
+    Options(&vhead, &vtail, &chead, &ctail, &rhead, &rtail, &vcnt, &ccnt, &rcnt);
+
     
     /*
     if( n == 1)
