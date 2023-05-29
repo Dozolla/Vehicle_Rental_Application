@@ -3,7 +3,7 @@
 void displayClientToFile(struct Client **head, int cnt)
 {
     FILE *outfile = NULL;
-    outfile = fopen("clients_database.txt", "w");
+    outfile = fopen("clients_database.txt", "a");
     if (!outfile)
     {
         printf("Cannot open File.\n");
@@ -69,7 +69,7 @@ int addClientFromFile(struct Client **head, struct Client **tail)
 void displayVehicleToFile(struct Vehicle **head, int cnt)
 {
     FILE *outfile = NULL;
-    outfile = fopen("vehicles_database.txt", "w");
+    outfile = fopen("vehicles_database.txt", "a");
     if (!outfile)
     {
         printf("Cannot open File.\n");
@@ -135,7 +135,7 @@ int addVehicleFormFile(struct Vehicle **head, struct Vehicle **tail)
 void displayReservationToFile(struct Reservation **head, int cnt)
 {
     FILE *outfile = NULL;
-    outfile = fopen("reservations_database.txt", "w");
+    outfile = fopen("reservations_database.txt", "a");
     if (!outfile)
     {
         printf("Cannot open File.\n");
