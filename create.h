@@ -52,9 +52,50 @@ void addVehicle(struct Vehicle** head, struct Vehicle** tail) {
     printf("New vehicle added successfully!\n");
 }
 
-//Hedije Jazaj
-void addReservation(){
-    printf("Not implemented");
+// Hedije Jazaj
+void addReservation(struct Reservation **head)
+{
+    // Create a new Reservation node
+    struct Reservation *newReservation = (struct Reservation *)malloc(sizeof(struct Reservation));
+    if (newReservation == NULL)
+    {
+        printf("Failed to allocate memory for the new reservation.\n");
+        return;
+    }
+    printf("Enter the reservation ID");
+    scanf("%d", &newReservation->ID);
+
+    printf("Enter the reservation date");
+    scanf("%s", newReservation->date);
+
+    printf("Enter the Client ID");
+    scanf("%D", &newReservation->client_ID);
+
+    printf("Enter the days");
+    scanf("%d", &newReservation->days);
+
+    printf("Enter the price");
+    scanf("%f", &newReservation->price);
+
+    newReservation->next = NULL;
+    if (*head == NULL)
+    {
+        *head = newReservation;
+    }
+    else
+    {
+
+        struct Reservation *current = *head;
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+
+        current->next = newReservation;
+    }
+
+    printf("New Reservation added successfully!\n");
 }
+
 
 #endif /* create.h */
