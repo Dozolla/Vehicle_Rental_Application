@@ -1,9 +1,17 @@
 #ifndef delete_h
 #define delete_h
-
+ //hedije jazaj
 void deleteReservation(struct Reservation **head)
 {
-    printf("Not implemented.\n");
+      struct Reservation *prev;
+     if (*head==NULL){
+         printf("There are no reservations to delete\n\n");
+         return;
+     }
+     prev=*head;
+     *head=prev->next;
+     free(prev);
+     printf("Reservation is deleted.\n\n");
 }
 
 
