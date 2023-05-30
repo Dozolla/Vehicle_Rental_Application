@@ -49,7 +49,7 @@ int addClientFromFile(struct Client **head, struct Client **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Client *)malloc(sizeof(struct Client));
-        fscanf(infile, "%d,%19[^,],%19[^,],%19[^,],%29[,],%19[^,],%d\n", &curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber, &curr->nr_of_reservations);
+        fscanf(infile, "%d,%19[^,],%19[^,],%19[^,],%29[^,],%19[^,],%d\n", &curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber, &curr->nr_of_reservations);
         curr->next = NULL;
         if (*head == NULL)
         {
@@ -181,7 +181,7 @@ int addReservationFromFile(struct Reservation **head, struct Reservation **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Reservation *)malloc(sizeof(struct Reservation));
-        fscanf(infile, "%d,%10[,],%d,%d,%f,%d\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price, &curr->vehicle_plate_number);
+        fscanf(infile, "%d,%10[^,],%d,%d,%f,%d\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price, &curr->vehicle_plate_number);
         curr->next = NULL;
         if (*head == NULL)
         {

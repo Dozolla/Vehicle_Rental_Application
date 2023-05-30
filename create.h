@@ -20,8 +20,8 @@ void addVehicle(struct Vehicle **head)
     // Get other details for the new vehicle
     printf("Enter the year: ");
     scanf("%d", &(newVehicle->year));
-    //As we enter an integer value and hit enter to read next value, compiler stores either enter or null into the string's first character and string input terminates. To avoid this, we use a temp statement to clear the buffer.
-    scanf("%c",&temp); // temp statement to clear buffer
+    // As we enter an integer value and hit enter to read next value, compiler stores either enter or null into the string's first character and string input terminates. To avoid this, we use a temp statement to clear the buffer.
+    scanf("%c", &temp); // temp statement to clear buffer
 
     printf("Enter the brand: ");
     scanf("%[^\n]", newVehicle->brand);
@@ -66,7 +66,6 @@ void addVehicle(struct Vehicle **head)
     printf("New vehicle added successfully!\n");
 }
 
-// Adi Salaj
 void addNewClient(struct Client **head)
 {
     struct Client *newClient = (struct Client *)malloc(sizeof(struct Client));
@@ -116,7 +115,7 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
         return 0;
     }
 
-    printf("Enter the Client ID");
+    printf("Enter the Client ID: ");
     scanf("%d", &newReservation->client_ID);
     *tailClient = *headClient;
     while (*headClient != NULL && *tailClient != NULL)
@@ -129,60 +128,59 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
             struct Vehicle *currV = (struct Vehicle *)malloc(sizeof(struct Vehicle));
             currV = *headVehicle;
 
+            printf("Enter the vehicle plate number: ");
+            scanf("%d", &newReservation->vehicle_plate_number);
             while (currV != NULL)
             {
-                if (currV->availability == 'a')
+                if (currV->plate_number == newReservation->vehicle_plate_number)
                 {
-                    printf("Enter the vehicle plate number: ");
-                    scanf("%d", &newReservation->vehicle_plate_number);
-                    while (currV != NULL)
+                    if (currV->availability == 'a')
                     {
-                        if (currV->plate_number == newReservation->vehicle_plate_number)
+                        currV->availability = 'b';
+
+                        printf("Enter the reservation date: ");
+                        scanf("%s", newReservation->date);
+
+                        printf("Enter how many days will the vehicle be rented: ");
+                        scanf("%d", &newReservation->days);
+
+                        newReservation->price = newReservation->days * currV->price;
+                        printf("The price for the reservation is: %.2f", newReservation->price);
+
+                        newReservation->next = NULL;
+                        if (*head == NULL)
                         {
-                            currV->availability = 'b';
-
-                            printf("Enter the reservation date: ");
-                            scanf("%s", newReservation->date);
-
-                            printf("Enter how many days will the vehicle be rented: ");
-                            scanf("%d", &newReservation->days);
-
-                            newReservation->price = newReservation->days * currV->price;
-                            printf("The price for the reservation is: %.2f", newReservation->price);
-
-                            newReservation->next = NULL;
-                            if (*head == NULL)
-                            {
-                                *head = newReservation;
-                            }
-                            else
-                            {
-                                struct Reservation *current = *head;
-                                while (current->next != NULL)
-                                {
-                                    current = current->next;
-                                }
-
-                                current->next = newReservation;
-                            }
-
-                            (*tailClient)->nr_of_reservations++;
-
-                            printf("\nNew Reservation added successfully!\n");
-                            return 1;
+                            *head = newReservation;
                         }
-                        break;
+                        else
+                        {
+                            struct Reservation *current = *head;
+                            while (current->next != NULL)
+                            {
+                                current = current->next;
+                            }
+
+                            current->next = newReservation;
+                        }
+
+                        (*tailClient)->nr_of_reservations++;
+
+                        printf("\nNew Reservation added successfully!\n");
+                        return 1;
+                    }
+                    else
+                    {
+                        printf("Vehicle is not available.\n");
+                        return 0;
                     }
                 }
-                printf("Vehicle does not exist. Please add the vehicle first.\n");
-                return 0;
+                currV = currV->next;
             }
-            currV = currV->next;
+            printf("Vehicle does not exist. Please add the vehicle first.\n");
+            return 0;
         }
-
         *tailClient = (*tailClient)->next;
     }
-
     printf("Client does not exist. Please add the client first.\n");
     return 0;
 }
