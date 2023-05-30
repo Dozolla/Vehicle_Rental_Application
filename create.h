@@ -26,8 +26,10 @@ void addVehicle(struct Vehicle **head)
     printf("Enter the brand: ");
     scanf("%[^\n]", newVehicle->brand);
 
+    scanf("%c", &temp); //again clear buffer
+
     printf("Enter the model: ");
-    scanf("%s", newVehicle->model);
+    scanf("%[^\n]", newVehicle->model);
 
     printf("Enter the fuel type: ");
     scanf("%s", newVehicle->fuel_type);

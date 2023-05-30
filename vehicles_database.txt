@@ -1,3 +1,2 @@
-2
-1562,2010,Alpha Romeo,c34,Red,gas,8.000000,4,150.000000,b
-234,2008,Mercedez,S,23,class,0.000000,-23,2.000000,a
+1
+1234,2003,Mercedes Benz,S Class,Black,Gasoline,8.000000,5,40.000000,a
