@@ -20,7 +20,7 @@ void displayClientToFile(struct Client **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%s,%s,%s,%s,%s\n", curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber);
+        fprintf(outfile, "%d,%s,%s,%s,%s,%s,%d\n", curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber, curr->nr_of_reservations);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -49,7 +49,7 @@ int addClientFromFile(struct Client **head, struct Client **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Client *)malloc(sizeof(struct Client));
-        fscanf(infile, "%d,%s,%s,%s,%s,%s\n", &curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber);
+        fscanf(infile, "%d,%s,%s,%s,%s,%s,%d\n", &curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber, &curr->nr_of_reservations);
         curr->next = NULL;
         if (*head == NULL)
         {
@@ -86,7 +86,7 @@ void displayVehicleToFile(struct Vehicle **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%d,%s,%s,%s,%f,%d,%f\n", curr->plate_number, curr->year, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price);
+        fprintf(outfile, "%d,%d,%s,%s,%s,%f,%d,%f,%c\n", curr->plate_number, curr->year, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price, curr->availability);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -115,7 +115,7 @@ int addVehicleFormFile(struct Vehicle **head, struct Vehicle **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Vehicle *)malloc(sizeof(struct Vehicle));
-        fscanf(infile, "%d,%d,%s,%s,%s,%f,%d,%f\n", &curr->plate_number, &curr->year, curr->model, curr->color, curr->fuel_type, &curr->consumption, &curr->seats, &curr->price);
+        fscanf(infile, "%d,%d,%s,%s,%s,%f,%d,%f,%c\n", &curr->plate_number, &curr->year, curr->model, curr->color, curr->fuel_type, &curr->consumption, &curr->seats, &curr->price, &curr->availability);
         curr->next = NULL;
         if (*head == NULL)
         {
@@ -152,7 +152,7 @@ void displayReservationToFile(struct Reservation **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%s,%d,%d,%f\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price);
+        fprintf(outfile, "%d,%s,%d,%d,%f,%d\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -181,7 +181,7 @@ int addReservationFromFile(struct Reservation **head, struct Reservation **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Reservation *)malloc(sizeof(struct Reservation));
-        fscanf(infile, "%d,%s,%d,%d,%f\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price);
+        fscanf(infile, "%d,%s,%d,%d,%f,%d\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price, &curr->vehicle_plate_number);
         curr->next = NULL;
         if (*head == NULL)
         {
@@ -196,6 +196,31 @@ int addReservationFromFile(struct Reservation **head, struct Reservation **tail)
     }
     fclose(infile);
     return cnt;
+}
+
+void displaySpecialReservationToFile(struct Reservation **head){
+    FILE *outfile = NULL;
+    outfile = fopen("special_reservations_database.txt", "w");
+    if (!outfile)
+    {
+        printf("Cannot open File.\n");
+        return;
+    }
+    float price = 0;
+    scanf("%f", &price);
+    struct Reservation *curr;
+    curr = *head;
+
+    while (curr != NULL)
+    {
+        if(curr->price > price){
+        fprintf(outfile, "%d,%s,%d,%d,%f,%d\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
+        printf("Added to file.\n");
+        }
+        curr = curr->next;
+    }
+
+    fclose(outfile);    
 }
 
 #endif /* system.h */

@@ -27,5 +27,29 @@ void displayAllVehicles(struct Vehicle* head) {
     }
 }
 
+void availableVehicles(struct Vehicle *head){
+    printf("Not implemented.\n");
+}
+
+void availableVehiclesAfterXDays(struct Vehicle* head){
+    printf("Not implemented.\n");
+}
+
+void searchVehiclePLATE(struct Vehicle* head){
+    printf("Not implemented.\n");
+}
+
+void top3Vehicles(struct Vehicle* head){
+    printf("Not implemented.\n");
+}
+
+void displayAllReservations(struct Reservation *head){
+    printf("Not implemented.\n");
+}
+
+void client_rent_more_than_3_times(struct Client *head){
+    printf("Not implemented.\n");
+}
+
 
 #endif /* display.h */
