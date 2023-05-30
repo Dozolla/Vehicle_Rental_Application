@@ -20,6 +20,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
 \n13. Save all reservations with a total cost exceeding x to a new file.\
 \n14. Modify information for a vehicle using its plate number.\
 \n15. Add new client.\
+\n16. Show all clients.\
 \n0. Exit the program.\n");
 
         printf("Please choose one of the following options:\n");
@@ -70,14 +71,18 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             client_rent_more_than_3_times(*headC);
             break;
         case 13:
-
+            displaySpecialReservationToFile(headR);
+            //what do we do with this?
             break;
         case 14:
+            modifyVehicle(head);
             break;
         case 15:
             addNewClient(headC);
             *cntC = *cntC + 1;
             break;
+            case 16:
+            displayAllClients(*headC);
         case -1:
             break;
         case 0:

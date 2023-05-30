@@ -12,12 +12,19 @@ void addVehicle(struct Vehicle **head)
         return;
     }
 
+    char temp;
+
     printf("Enter the plate number: ");
     scanf("%d", &newVehicle->plate_number);
 
     // Get other details for the new vehicle
     printf("Enter the year: ");
     scanf("%d", &(newVehicle->year));
+    //As we enter an integer value and hit enter to read next value, compiler stores either enter or null into the string's first character and string input terminates. To avoid this, we use a temp statement to clear the buffer.
+    scanf("%c",&temp); // temp statement to clear buffer
+
+    printf("Enter the brand: ");
+    scanf("%[^\n]", newVehicle->brand);
 
     printf("Enter the model: ");
     scanf("%s", newVehicle->model);
@@ -116,7 +123,7 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
     {
         if (newReservation->client_ID == (*tailClient)->ID)
         {
-            printf("Enter the reservation ID");
+            printf("Enter the reservation ID: ");
             scanf("%d", &newReservation->ID);
 
             struct Vehicle *currV = (struct Vehicle *)malloc(sizeof(struct Vehicle));
@@ -126,7 +133,7 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
             {
                 if (currV->availability == 'a')
                 {
-                    printf("Enter the vehicle plate number");
+                    printf("Enter the vehicle plate number: ");
                     scanf("%d", &newReservation->vehicle_plate_number);
                     while (currV != NULL)
                     {
@@ -134,10 +141,10 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
                         {
                             currV->availability = 'b';
 
-                            printf("Enter the reservation date");
+                            printf("Enter the reservation date: ");
                             scanf("%s", newReservation->date);
 
-                            printf("Enter the days");
+                            printf("Enter how many days will the vehicle be rented: ");
                             scanf("%d", &newReservation->days);
 
                             newReservation->price = newReservation->days * currV->price;
@@ -161,7 +168,7 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
 
                             (*tailClient)->nr_of_reservations++;
 
-                            printf("New Reservation added successfully!\n");
+                            printf("\nNew Reservation added successfully!\n");
                             return 1;
                         }
                         break;

@@ -13,8 +13,9 @@ void displayAllVehicles(struct Vehicle* head) {
     struct Vehicle* current = head;
     while (current != NULL) {
         vehicleCount++;
-        printf("Plate Number: %d\n", current->plate_number);
+        printf("\nPlate Number: %d\n", current->plate_number);
         printf("Year: %d\n", current->year);
+        printf("Brand: %s\n", current->brand);
         printf("Model: %s\n", current->model);
         printf("Color: %s\n", current->color);
         printf("Fuel Type: %s\n", current->fuel_type);
@@ -51,5 +52,8 @@ void client_rent_more_than_3_times(struct Client *head){
     printf("Not implemented.\n");
 }
 
+void displayAllClients(struct Client *head){
+    printf("Not implemented.\n");
+}
 
 #endif /* display.h */
