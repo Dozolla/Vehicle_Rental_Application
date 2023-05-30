@@ -29,8 +29,35 @@ void displayAllVehicles(struct Vehicle* head) {
 }
 
 void availableVehicles(struct Vehicle *head){
-    printf("Not implemented.\n");
+   
+    if (head == NULL) {
+        printf("There are no vehicles available.\n\n");
+        return;
+    }
+
+    printf("Available Vehicles are:\n");
+
+    struct Vehicle* current = head;
+    while (current != NULL) {
+        if (current->availability == 'a') {
+             printf("\nPlate Number: %d\n", current->plate_number);
+        printf("Year: %d\n", current->year);
+        printf("Brand: %s\n", current->brand);
+        printf("Model: %s\n", current->model);
+        printf("Color: %s\n", current->color);
+        printf("Fuel Type: %s\n", current->fuel_type);
+        printf("Fuel Consumption: %.2f liters/km\n", current->consumption);
+        printf("Number of Seats: %d\n", current->seats);
+        printf("Daily Price: %.2f\n", current->price);
+        printf("\n");
+        
+        }
+        current = current->next;
+    }
+
+    printf("\n");
 }
+
 
 void availableVehiclesAfterXDays(struct Vehicle* head){
     printf("Not implemented.\n");
