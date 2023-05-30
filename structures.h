@@ -6,7 +6,8 @@ struct Vehicle{
     int plate_number;
     int year;
     char model[20];
-    char color[10];
+    char brand[100];
+    char color[15];
     char fuel_type[20];
     float consumption;
     int seats;
@@ -30,7 +31,7 @@ struct Client{
 
 struct Reservation{
     int ID;
-    char date[10];
+    char date[11];
     int client_ID;
     int days;
     float price;
