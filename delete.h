@@ -7,7 +7,7 @@ void deleteReservation(struct Reservation **head)
 }
 
 
-void removeVehicle(struct Vehicle **head,int *cnt){
+void removeVehicle(struct Vehicle **head){
      struct Vehicle *prev;
      if (*head==NULL){
          printf("There are no vehicles to delete\n\n");
@@ -17,9 +17,6 @@ void removeVehicle(struct Vehicle **head,int *cnt){
      *head=prev->next;
      free(prev);
      printf("Vehicle is deleted.\n\n");
-     int i;
-     i=*cnt;
-     *cnt=i-1
  }
 
 #endif /* delete.h */

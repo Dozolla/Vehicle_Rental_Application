@@ -59,8 +59,8 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             displayAllReservations(*headR);
             break;
         case 10:
-            //deleteVehicle(head);
-            //*cntV = *cntV - 1;
+            removeVehicle(head);
+            *cntV = *cntV - 1;
             break;
         case 11:
             deleteReservation(headR);
