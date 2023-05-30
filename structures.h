@@ -11,6 +11,7 @@ struct Vehicle{
     float consumption;
     int seats;
     float price;
+    char availability;
 
     struct Vehicle *next;
 };
@@ -22,6 +23,7 @@ struct Client{
     char passport_ID[20];
     char State[30];
     char phoneNumber[20];
+    int nr_of_reservations;
 
     struct Client *next;
 };
@@ -32,6 +34,7 @@ struct Reservation{
     int client_ID;
     int days;
     float price;
+    int vehicle_plate_number;
     
     struct Reservation *next;
 };

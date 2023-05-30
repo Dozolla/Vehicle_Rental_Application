@@ -1,6 +1,12 @@
 #ifndef delete_h
 #define delete_h
 
+void deleteReservation(struct Reservation **head)
+{
+    printf("Not implemented.\n");
+}
+
+
 void removeVehicle(struct Vehicle **head,int *cnt){
      struct Vehicle *prev;
      if (*head==NULL){
@@ -13,8 +19,7 @@ void removeVehicle(struct Vehicle **head,int *cnt){
      printf("Vehicle is deleted.\n\n");
      int i;
      i=*cnt;
-     *cnt=i-1;
-
+     *cnt=i-1
  }
- 
+
 #endif /* delete.h */
