@@ -1,11 +1,11 @@
+# Vehicle_Rental_Application
+
 ## HOW TO RUN THE PROGRAM
 ```console
 gcc -o main main.c && ./main
 ```
 
 ## Project REQUIREMENTS
-
-# Vehicle_Rental_Application
 
 You must develop a program in the C programming language for a Vehicle Rental Company that
 will enable users to store all necessary information for each vehicle, add new clients and
