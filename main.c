@@ -3,9 +3,13 @@
 #include <string.h>
 #include <stdbool.h>
 #include <math.h>
+#include <limits.h>
+#include <time.h>
+#include <errno.h>
+
 #include "structures.h"
 #include "system_file.h"
-#include "helper.h"
+#include "color.h"
 #include "create.h"
 #include "delete.h"
 #include "display.h"
@@ -25,9 +29,15 @@ int main(){
 
     printf("\n");
 
-    helper_bg_color(Cyan);
-    printf("Welcome to the Car Rental System!");
-    helper_bg_color(Reset);
+    helper_bg_color(6);
+    helper_fg_color(16);
+    printf("    * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n\
+    *                                                     *\n\
+    *          Welcome to the Car Rental System!          *\n\
+    *                                                     *\n\
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+    helper_fg_color(0);
+    helper_bg_color(0);
     printf("\n\n");
 
     Options(&vhead, &vtail, &chead, &ctail, &rhead, &rtail, &vcnt, &ccnt, &rcnt);
