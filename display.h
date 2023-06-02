@@ -36,7 +36,7 @@ void displayAllVehicles(struct Vehicle *head)
         current = current->next;
     }
 }
-
+//Arlind Alliu
 void availableVehicles(struct Vehicle *head)
 {
 
@@ -80,12 +80,14 @@ void availableVehiclesAfterXDays(struct Vehicle *head)
     printf("Not implemented.\n");
 }
 
+//Arlind Alliu
 void searchVehiclePLATE(struct Vehicle *head)
 {
-    
-    char plate[20];
+    char temp, plate[20];
+    scanf("%c", &temp); 
     printf("Enter the plate number: ");
-    scanf("%s", plate);
+    scanf("%[^\n]", plate);
+    
 
     struct Vehicle *current = head;
     while (current != NULL)
@@ -106,7 +108,9 @@ void searchVehiclePLATE(struct Vehicle *head)
         }
         current = current->next;
     }
+    helper_fg_color(1);
     printf("No vehicle with plate number %s found.\n", plate);
+    helper_fg_color(0);
 }
 
     
