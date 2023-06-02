@@ -36,7 +36,7 @@ void displayAllVehicles(struct Vehicle *head)
         current = current->next;
     }
 }
-
+//Arlind Alliu
 void availableVehicles(struct Vehicle *head)
 {
 
@@ -80,10 +80,42 @@ void availableVehiclesAfterXDays(struct Vehicle *head)
     printf("Not implemented.\n");
 }
 
+//Arlind Alliu
 void searchVehiclePLATE(struct Vehicle *head)
 {
-    printf("Not implemented.\n");
+    char temp, plate[20];
+    scanf("%c", &temp); 
+    printf("Enter the plate number: ");
+    scanf("%[^\n]", plate);
+    
+
+    struct Vehicle *current = head;
+    while (current != NULL)
+    {
+        if (strcmp(current->plate_number, plate) == 0)
+        {
+            printf("\nPlate Number: %s\n", current->plate_number);
+            printf("Year: %d\n", current->year);
+            printf("Model: %s\n", current->model);
+            printf("Brand: %s\n", current->brand);
+            printf("Color: %s\n", current->color);
+            printf("Fuel Type: %s\n", current->fuel_type);
+            printf("Fuel Consumption: %.2f liters/km\n", current->consumption);
+            printf("Number of Seats: %d\n", current->seats);
+            printf("Daily Price: %.2f\n", current->price);
+            printf("\n");
+            return;
+        }
+        current = current->next;
+    }
+    helper_fg_color(1);
+    printf("No vehicle with plate number %s found.\n", plate);
+    helper_fg_color(0);
 }
+
+    
+
+
 
 void top3Vehicles(struct Vehicle *head)
 {
