@@ -1,2 +1,5 @@
-1
-1234,2003,Mercedes Benz,S Class,Black,Gasoline,8.000000,5,40.000000,a
+4
+AA 123 BA,2003,Mercedes Benz,S Class,Black,Gasoline,8.000000,5,40.000000,a
+AA 123 GH,2004,Audi,A4,Black,Gasoline,7.000000,5,50.000000,a
+AA 777 BG,2018,Audi,A8,Matte Black,Diesel,5.000000,5,150.000000,b
+AA 124 HL,2012,McLaren,Spider,Blue,Gasoline,12.000000,2,300.000000,a

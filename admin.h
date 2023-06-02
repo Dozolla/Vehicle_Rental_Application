@@ -5,27 +5,31 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
     int a;
     while (1)
     {
-        printf("\n1. Display all vehicle information.\
-\n2. Display available vehicles currently.\
-\n3. Display vehicles that will be available after x days.\
-\n4. Create a new reservation.\
-\n5. Add a new vehicle.\
-\n6. Search for a vehicle using the license plate number.\
-\n7. Sort and display all vehicles according to their daily rental price.\
-\n8. Display the top 3 most reserved vehicles.\
-\n9. Display all reservations.\
-\n10. Remove a vehicle. (delete)\
-\n11. Cancel a reservation. (delete)\
-\n12. Display the name, surname and Client ID of all clients who have rented a vehicle (not necessarily the same) more than 3 times.\
-\n13. Save all reservations with a total cost exceeding x to a new file.\
-\n14. Modify information for a vehicle using its plate number.\
-\n15. Add new client.\
-\n16. Show all clients.\
-\n0. Exit the program.\n");
-
-        printf("Please choose one of the following options:\n");
+        helper_fg_color(13);
+        printf("\n  1. Display all vehicle information.\
+\n  2. Display available vehicles currently.\
+\n  3. Display vehicles that will be available after x days.\
+\n  4. Create a new reservation.\
+\n  5. Add a new vehicle.\
+\n  6. Search for a vehicle using the license plate number.\
+\n  7. Sort and display all vehicles according to their daily rental price.\
+\n  8. Display the top 3 most reserved vehicles.\
+\n  9. Display all reservations.\
+\n  10. Remove a vehicle. (delete)\
+\n  11. Cancel a reservation. (delete)\
+\n  12. Display the name, surname and Client ID of all clients who have rented a vehicle (not necessarily the same) more than 3 times.\
+\n  13. Save all reservations with a total cost exceeding x to a new file.\
+\n  14. Modify information for a vehicle using its plate number.\
+\n  15. Add new client.\
+\n  16. Show all clients.\
+\n  0. Exit the program.\n");
+helper_fg_color(0);
+        helper_fg_color(12);
+        printf("Please choose one of the above options:\n");
         int option;
+        printf("~ ");
         scanf("%d", &option);
+        helper_fg_color(0);
         switch (option)
         {
         case 1:

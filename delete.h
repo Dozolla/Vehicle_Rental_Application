@@ -1,53 +1,69 @@
 #ifndef delete_h
 #define delete_h
- //hedije jazaj
+// hedije jazaj
 void deleteReservation(struct Reservation **head)
 {
-      struct Reservation *prev;
-     if (*head==NULL){
-         printf("There are no reservations to delete\n\n");
-         return;
-     }
-     prev=*head;
-     *head=prev->next;
-     free(prev);
-     printf("Reservation is deleted.\n\n");
+    struct Reservation *prev;
+    if (*head == NULL)
+    {
+        helper_fg_color(1);
+        printf("There are no reservations to delete\n\n");
+        helper_fg_color(0);
+        return;
+    }
+    prev = *head;
+    *head = prev->next;
+    free(prev);
+    helper_fg_color(2);
+    printf("Reservation is deleted.\n\n");
+    helper_fg_color(0);
 }
 
-
-void removeVehicle(struct Vehicle **head) {
-    int vehicleplate_number;
+// Arlind Alliu
+void removeVehicle(struct Vehicle **head)
+{
+    char vehicleplate_number[10];
     struct Vehicle *current = *head;
     struct Vehicle *prev = NULL;
 
-    if (*head == NULL) {
+    if (*head == NULL)
+    {
+        helper_fg_color(1);
         printf("There are no vehicles to delete.\n\n");
+        helper_fg_color(0);
         return;
     }
 
     printf("Enter the vehicle Plate Number you want to delete: ");
-    scanf("%d", &vehicleplate_number);
+    scanf("%s", vehicleplate_number);
 
-    
-    while (current != NULL && current->plate_number != vehicleplate_number) {
+    while (current != NULL && strcmp(current->plate_number, vehicleplate_number) != 0)
+    {
         prev = current;
         current = current->next;
     }
 
-    if (current == NULL) {
-        printf("Vehicle with Plate Number %d does not exist.\n\n", vehicleplate_number);
+    if (current == NULL)
+    {
+        helper_fg_color(1);
+        printf("Vehicle with Plate Number %s does not exist.\n\n", vehicleplate_number);
+        helper_fg_color(0);
         return;
     }
 
-     if (prev == NULL) {
+    if (prev == NULL)
+    {
         *head = current->next;
-    } else {
+    }
+    else
+    {
         prev->next = current->next;
     }
 
     free(current);
-    printf("Vehicle with Plate Number %d is deleted.\n\n", vehicleplate_number);
+    helper_fg_color(2);
+    printf("Vehicle with Plate Number %s is deleted.\n\n", vehicleplate_number);
+    helper_fg_color(0);
 }
-
 
 #endif /* delete.h */

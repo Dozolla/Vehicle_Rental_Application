@@ -3,7 +3,7 @@
 #define structures_h
 
 struct Vehicle{
-    int plate_number;
+    char plate_number[10];
     int year;
     char model[20];
     char brand[100];
@@ -35,7 +35,7 @@ struct Reservation{
     int client_ID;
     int days;
     float price;
-    int vehicle_plate_number;
+    char vehicle_plate_number[10];
     
     struct Reservation *next;
 };

@@ -1,5 +1,6 @@
 #ifndef system_h
 #define system_h
+
 void displayClientToFile(struct Client **head, int cnt)
 {
     FILE *outfile = NULL;
@@ -86,7 +87,7 @@ void displayVehicleToFile(struct Vehicle **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%d,%s,%s,%s,%s,%f,%d,%f,%c\n", curr->plate_number, curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price, curr->availability);
+        fprintf(outfile, "%s,%d,%s,%s,%s,%s,%f,%d,%f,%c\n", curr->plate_number, curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price, curr->availability);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -115,7 +116,7 @@ int addVehicleFromFile(struct Vehicle **head, struct Vehicle **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Vehicle *)malloc(sizeof(struct Vehicle));
-        fscanf(infile, "%d,%d,%29[^,],%19[^,],%14[^,],%20[^,],%f,%d,%f,%c\n", &curr->plate_number, &curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, &curr->consumption, &curr->seats, &curr->price, &curr->availability);
+        fscanf(infile, "%9[^,],%d,%29[^,],%19[^,],%14[^,],%20[^,],%f,%d,%f,%c\n", curr->plate_number, &curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, &curr->consumption, &curr->seats, &curr->price, &curr->availability);
         curr->next = NULL;
         if (*head == NULL)
         {
@@ -152,7 +153,7 @@ void displayReservationToFile(struct Reservation **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%s,%d,%d,%f,%d\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
+        fprintf(outfile, "%d,%s,%d,%d,%f,%s\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -181,7 +182,7 @@ int addReservationFromFile(struct Reservation **head, struct Reservation **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Reservation *)malloc(sizeof(struct Reservation));
-        fscanf(infile, "%d,%10[^,],%d,%d,%f,%d\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price, &curr->vehicle_plate_number);
+        fscanf(infile, "%d,%10[^,],%d,%d,%f,%9[^,]\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price, curr->vehicle_plate_number);
         curr->next = NULL;
         if (*head == NULL)
         {
@@ -215,7 +216,7 @@ void displaySpecialReservationToFile(struct Reservation **head){
     while (curr != NULL)
     {
         if(curr->price > price){
-        fprintf(outfile, "%d,%s,%d,%d,%f,%d\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
+        fprintf(outfile, "%d,%s,%d,%d,%f,%s\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
         printf("Added to file.\n");
         }
         curr = curr->next;
