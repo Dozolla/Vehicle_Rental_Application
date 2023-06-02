@@ -1,9 +1,9 @@
-##HOW TO RUN THE PROGRAM
+## HOW TO RUN THE PROGRAM
 ```console
 gcc -o main main.c && ./main
 ```
 
-##Project REQUIREMENTS
+## Project REQUIREMENTS
 
 # Vehicle_Rental_Application
 
