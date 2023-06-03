@@ -129,8 +129,28 @@ void displayAllReservations(struct Reservation *head)
 
 void client_rent_more_than_3_times(struct Client *head)
 {
-    printf("Not implemented.\n");
+    printf("Clients with more than 3 rentals are: \n");
+    struct Client* current = head;
+
+    while (current != NULL) {
+        if (current->nr_of_reservations > 3) {
+            printf("Name: %s\n", current->name);
+            printf("Surname: %s\n", current->surname);
+            printf("Client ID: %d\n", current->ID);
+        }
+        else {
+            helper_fg_color(1);
+            printf("No client with more than 3 rentals found.\n");
+            helper_fg_color(0);
+        }
+
+        current = current->next;
+    }
 }
+
+
+   
+
 
 void displayAllClients(struct Client *head)
 {
