@@ -8,9 +8,9 @@ void addVehicle(struct Vehicle **head)
 
     if (newVehicle == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("Failed to allocate memory for the new vehicle.\n");
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
 
@@ -28,9 +28,9 @@ void addVehicle(struct Vehicle **head)
     {
         if (newVehicle->year < 1920 || newVehicle->year > 2023)
         {
-            helper_fg_color(1);
+            fg_color(1);
             printf("Invalid year inputed.\n");
-            helper_fg_color(0);
+            fg_color(0);
             printf("Enter the year: ");
             scanf("%d", &(newVehicle->year));
         }
@@ -84,9 +84,9 @@ void addVehicle(struct Vehicle **head)
         current->next = newVehicle;
     }
 
-    helper_fg_color(2);
+    fg_color(2);
     printf("New vehicle added successfully!\n");
-    helper_fg_color(0);
+    fg_color(0);
 }
 
 void addNewClient(struct Client **head)
@@ -94,9 +94,9 @@ void addNewClient(struct Client **head)
     struct Client *newClient = (struct Client *)malloc(sizeof(struct Client));
     if (newClient == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("Failed to allocate memory for the new client.\n");
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
     printf("Enter the client ID: ");
@@ -126,9 +126,9 @@ void addNewClient(struct Client **head)
         }
         current->next = newClient;
     }
-    helper_fg_color(2);
+    fg_color(2);
     printf("New client added successfully!\n");
-    helper_fg_color(0);
+    fg_color(0);
 }
 
 // Hedije Jazaj
@@ -139,9 +139,9 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
     struct Reservation *newReservation = (struct Reservation *)malloc(sizeof(struct Reservation));
     if (newReservation == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("Failed to allocate memory for the new reservation.\n");
-        helper_fg_color(0);
+        fg_color(0);
         return 0;
     }
 
@@ -166,9 +166,9 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
                 {
                     if (currV->availability != 'a')
                     {
-                        helper_fg_color(1);
+                        fg_color(1);
                         printf("Vehicle is not available. Please choose another vehicle.\n");
-                        helper_fg_color(0);
+                        fg_color(0);
                         return 0;
                     }
                     else
@@ -202,24 +202,24 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
 
                         (*tailClient)->nr_of_reservations++;
 
-                        helper_fg_color(2);
+                        fg_color(2);
                         printf("\nNew Reservation added successfully!\n");
-                        helper_fg_color(0);
+                        fg_color(0);
                         return 1;
                     }
                 }
                 currV = currV->next;
             }
-            helper_fg_color(1);
+            fg_color(1);
             printf("Vehicle does not exist. Please add the vehicle first.\n");
-            helper_fg_color(0);
+            fg_color(0);
             return 0;
         }
         *tailClient = (*tailClient)->next;
     }
-    helper_fg_color(1);
+    fg_color(1);
     printf("Client does not exist. Please add the client first.\n");
-    helper_fg_color(0);
+    fg_color(0);
     return 0;
 }
 

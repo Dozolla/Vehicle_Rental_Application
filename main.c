@@ -29,15 +29,15 @@ int main(){
 
     printf("\n");
 
-    helper_bg_color(6);
-    helper_fg_color(16);
+     bg_color(6);
+     fg_color(16);
     printf("    * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n\
     *                                                     *\n\
     *          Welcome to the Car Rental System!          *\n\
     *                                                     *\n\
     * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
-    helper_fg_color(0);
-    helper_bg_color(0);
+     fg_color(0);
+     bg_color(0);
     printf("\n\n");
 
     Options(&vhead, &vtail, &chead, &ctail, &rhead, &rtail, &vcnt, &ccnt, &rcnt);

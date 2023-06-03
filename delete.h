@@ -6,17 +6,17 @@ void deleteReservation(struct Reservation **head)
     struct Reservation *prev;
     if (*head == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("There are no reservations to delete\n\n");
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
     prev = *head;
     *head = prev->next;
     free(prev);
-    helper_fg_color(2);
+    fg_color(2);
     printf("Reservation is deleted.\n\n");
-    helper_fg_color(0);
+    fg_color(0);
 }
 
 // Arlind Alliu
@@ -28,9 +28,9 @@ void removeVehicle(struct Vehicle **head)
 
     if (*head == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("There are no vehicles to delete.\n\n");
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
 
@@ -45,9 +45,9 @@ void removeVehicle(struct Vehicle **head)
 
     if (current == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("Vehicle with Plate Number %s does not exist.\n\n", vehicleplate_number);
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
 
@@ -61,9 +61,9 @@ void removeVehicle(struct Vehicle **head)
     }
 
     free(current);
-    helper_fg_color(2);
+    fg_color(2);
     printf("Vehicle with Plate Number %s is deleted.\n\n", vehicleplate_number);
-    helper_fg_color(0);
+    fg_color(0);
 }
 
 #endif /* delete.h */

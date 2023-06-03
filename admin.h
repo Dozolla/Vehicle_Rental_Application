@@ -5,7 +5,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
     int a;
     while (1)
     {
-        helper_fg_color(13);
+        fg_color(13);
         printf("\n  1. Display all vehicle information.\
 \n  2. Display available vehicles currently.\
 \n  3. Display vehicles that will be available after x days.\
@@ -23,13 +23,13 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
 \n  15. Add new client.\
 \n  16. Show all clients.\
 \n  0. Exit the program.\n");
-helper_fg_color(0);
-        helper_fg_color(12);
+        fg_color(0);
+        fg_color(12);
         printf("Please choose one of the above options:\n");
         int option;
         printf("~ ");
         scanf("%d", &option);
-        helper_fg_color(0);
+        fg_color(0);
         switch (option)
         {
         case 1:
@@ -42,9 +42,10 @@ helper_fg_color(0);
             availableVehiclesAfterXDays(*head);
             break;
         case 4:
-            a=addReservation(headR, headC, tailC, head);
-            if (a == 1){
-            *cntR = *cntR + 1;
+            a = addReservation(headR, headC, tailC, head);
+            if (a == 1)
+            {
+                *cntR = *cntR + 1;
             }
             break;
         case 5:
@@ -76,7 +77,7 @@ helper_fg_color(0);
             break;
         case 13:
             displaySpecialReservationToFile(headR);
-            //what do we do with this?
+            // what do we do with this?
             break;
         case 14:
             modifyVehicle(head);
@@ -85,18 +86,22 @@ helper_fg_color(0);
             addNewClient(headC);
             *cntC = *cntC + 1;
             break;
-            case 16:
+        case 16:
             displayAllClients(*headC);
         case -1:
             break;
         case 0:
+            fg_color(15);
             printf("Exiting the program...\n");
+            fg_color(0);
             displayReservationToFile(headR, *cntR);
             displayVehicleToFile(head, *cntV);
             displayClientToFile(headC, *cntC);
             return;
         default:
+            fg_color(1);
             printf("Invalid option! Please try again!\n");
+            fg_color(0);
             break;
         }
     }
