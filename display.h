@@ -42,21 +42,21 @@ void availableVehicles(struct Vehicle *head)
 
     if (head == NULL)
     {
-         fg_color(1);
+        fg_color(1);
         printf("There are no vehicles available.\n\n");
-         fg_color(0);
+        fg_color(0);
         return;
     }
 
-     fg_color(15);
+    fg_color(15);
     printf("Available Vehicles are:\n");
-     fg_color(0);
+    fg_color(0);
     struct Vehicle *current = head;
     while (current != NULL)
     {
         if (current->availability == 'a')
         {
-             fg_color(6);
+            fg_color(6);
             printf("\nPlate Number: %s\n", current->plate_number);
             printf("Year: %d\n", current->year);
             printf("Brand: %s\n", current->brand);
@@ -66,7 +66,7 @@ void availableVehicles(struct Vehicle *head)
             printf("Fuel Consumption: %.2f liters/km\n", current->consumption);
             printf("Number of Seats: %d\n", current->seats);
             printf("Daily Price: %.2f\n", current->price);
-             fg_color(0);
+            fg_color(0);
             printf("\n");
         }
         current = current->next;
@@ -107,9 +107,9 @@ void searchVehiclePLATE(struct Vehicle *head)
         }
         current = current->next;
     }
-     fg_color(1);
+    fg_color(1);
     printf("No vehicle with plate number %s found.\n", plate);
-     fg_color(0);
+    fg_color(0);
 }
 
 void top3Vehicles(struct Vehicle *head)
@@ -138,15 +138,14 @@ void client_rent_more_than_3_times(struct Client *head)
             printf("Client ID: %d\n", current->ID);
             fg_color(0);
             cnt++;
-
         }
         current = current->next;
     }
     if (cnt == 0)
     {
-         fg_color(1);
+        fg_color(1);
         printf("No client with more than 3 rentals found.\n");
-         fg_color(0);
+        fg_color(0);
     }
 }
 
