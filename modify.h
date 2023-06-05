@@ -50,7 +50,7 @@ void modifyVehicle(struct Vehicle **head)
             printf("Enter the new daily price: ");
             scanf("%f", &current->price);
             fg_color(2);
-            printf("Vehicle modified successfully.\n");
+            printf("\nVehicle modified successfully.\n");
             fg_color(0);
             current->availability = 'a';
             return;
