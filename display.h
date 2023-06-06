@@ -117,9 +117,38 @@ void top3Vehicles(struct Vehicle *head)
     printf("Not implemented.\n");
 }
 
+//Hedije Jazaj
 void displayAllReservations(struct Reservation *head)
 {
-    printf("Not implemented.\n");
+    if (head == NULL)
+    {
+        fg_color(1);
+        printf("No reservations found.\n");
+        fg_color(0);
+        return;
+    }
+    else
+    {
+        fg_color(15);
+        printf("All Reservation Information\n");
+        fg_color(0);
+    }
+    int reservationCount = 0;
+    struct Reservation *current = head;
+    while (current != NULL)
+    {
+        reservationCount++;
+        fg_color(6);
+        printf("\nReservation ID: %d\n", current->ID);
+        printf("Date %s\n", current->date);
+        printf("Client ID: %d\n", current->client_ID);
+        printf("Number of Days: %d\n", current->days);
+        printf("Price: %.2f\n", current->price);
+        printf("Vehicle Plate Number: %s\n", current->vehicle_plate_number);
+                fg_color(0);
+
+        current = current->next;
+    }
 }
 
 void client_rent_more_than_3_times(struct Client *head)
@@ -149,9 +178,40 @@ void client_rent_more_than_3_times(struct Client *head)
     }
 }
 
+//Hedije Jazaj
 void displayAllClients(struct Client *head)
 {
-    printf("Not implemented.\n");
+   if (head == NULL)
+    {
+        fg_color(1);
+        printf("No clients found.\n");
+        fg_color(0);
+        return;
+    }
+    else
+    {
+        fg_color(15);
+        printf("All Clients Information\n");
+        fg_color(0);
+    }
+    int clientCount = 0;
+    struct Client *current = head;
+    while (current != NULL)
+    {
+        clientCount++;
+        fg_color(6);
+        printf("\nClient ID: %d\n", current->ID);
+        printf("Client name: %s\n", current->name);
+        printf("Client surname %s\n", current->surname);
+        printf("Passport ID %s\n", current->passport_ID);
+        printf("State %s\n", current->State);
+        printf("Phone number %s\n", current->phoneNumber);
+        printf("Number of reservations %d\n", current->nr_of_reservations);
+        fg_color(0);
+
+        current = current->next;
+    }
 }
+
 
 #endif /* display.h */
