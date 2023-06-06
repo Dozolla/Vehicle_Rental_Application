@@ -35,6 +35,7 @@ struct Reservation{
     char date[11];
     int client_ID;
     int days;
+    char end_date[11];
     float price;
     char vehicle_plate_number[10];
     
