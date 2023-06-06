@@ -1,5 +1,5 @@
 4
 AA 123 BA,2003,Mercedes Benz,S Class,Black,Gasoline,8.000000,5,40.000000,a,0
-AA 123 GH,2004,Audi,A4,Black,Gasoline,7.000000,5,50.000000,a,0
-AA 777 BG,2019,Audi,A7,Matte Black,Gasoline,6.000000,5,150.000000,a,1
-AA 124 HL,2012,McLaren,Spider,Blue,Gasoline,12.000000,2,300.000000,b,1
+AA 123 GH,2004,Audi,A4,Black,Gasoline,7.000000,5,50.000000,b,1
+AA 777 BG,2019,Audi,A7,Matte Black,Gasoline,6.000000,5,150.000000,b,2
+AA 124 HL,2012,McLaren,Spider,Blue,Gasoline,12.000000,2,300.000000,a,1

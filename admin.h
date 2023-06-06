@@ -111,6 +111,9 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             displayReservationToFile(headR, *cntR);
             displayVehicleToFile(head, *cntV);
             displayClientToFile(headC, *cntC);
+            fg_color(11);
+            printf("Data saved successfully!\nFinished!\n");
+            fg_color(0);
             return;
         default:
             fg_color(1);

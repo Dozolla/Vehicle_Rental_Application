@@ -62,7 +62,7 @@ int main()
     {
         while (current != NULL)
         {
-            if (strcmp(current->end_date, current_date) <= 0)
+            if (strcmp(current->end_date, current_date) == 0)
             {
                 while (currentV != NULL)
                 {
