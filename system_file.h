@@ -87,7 +87,7 @@ void displayVehicleToFile(struct Vehicle **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%s,%d,%s,%s,%s,%s,%f,%d,%f,%c\n", curr->plate_number, curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price, curr->availability);
+        fprintf(outfile, "%s,%d,%s,%s,%s,%s,%f,%d,%f,%c,%d\n", curr->plate_number, curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, curr->consumption, curr->seats, curr->price, curr->availability, curr->nr_of_reservations);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -116,7 +116,7 @@ int addVehicleFromFile(struct Vehicle **head, struct Vehicle **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Vehicle *)malloc(sizeof(struct Vehicle));
-        fscanf(infile, "%9[^,],%d,%29[^,],%19[^,],%14[^,],%20[^,],%f,%d,%f,%c\n", curr->plate_number, &curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, &curr->consumption, &curr->seats, &curr->price, &curr->availability);
+        fscanf(infile, "%9[^,],%d,%29[^,],%19[^,],%14[^,],%20[^,],%f,%d,%f,%c,%d\n", curr->plate_number, &curr->year, curr->brand, curr->model, curr->color, curr->fuel_type, &curr->consumption, &curr->seats, &curr->price, &curr->availability, &curr->nr_of_reservations);
         curr->next = NULL;
         if (*head == NULL)
         {

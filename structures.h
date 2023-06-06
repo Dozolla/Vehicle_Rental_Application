@@ -13,6 +13,7 @@ struct Vehicle{
     int seats;
     float price;
     char availability;
+    int nr_of_reservations;
 
     struct Vehicle *next;
 };

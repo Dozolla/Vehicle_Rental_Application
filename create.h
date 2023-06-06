@@ -66,6 +66,7 @@ void addVehicle(struct Vehicle **head)
     scanf("%f", &(newVehicle->price));
 
     newVehicle->availability = 'a';
+    newVehicle->nr_of_reservations = 0;
 
     newVehicle->next = NULL;
     if (*head == NULL)
@@ -174,6 +175,7 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
                     else
                     {
                         currV->availability = 'b';
+                        currV->nr_of_reservations++;
 
                         printf("Enter the reservation date dd/mm/yyyy: ");
                         scanf("%s", newReservation->date);
