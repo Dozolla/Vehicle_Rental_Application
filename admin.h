@@ -1,5 +1,8 @@
 #ifndef admin_h
 #define admin_h
+
+#include <unistd.h>
+
 void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC, struct Client **tailC, struct Reservation **headR, struct Reservation **tailR, int *cntV, int *cntC, int *cntR)
 {
     int a;
@@ -93,6 +96,17 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
         case 0:
             fg_color(15);
             printf("Exiting the program...\n");
+            printf("Saving data to files...\n");
+            for (int i = 0; i < 10; i++)
+            {
+                fg_color(2);
+                printf("▓");
+                fg_color(0);
+                fflush(stdout);
+                usleep(50000); // Sleep for 50 milliseconds
+            }
+            fg_color(2);
+            printf(" 100%%\n");
             fg_color(0);
             displayReservationToFile(headR, *cntR);
             displayVehicleToFile(head, *cntV);
