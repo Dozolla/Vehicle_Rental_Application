@@ -153,7 +153,7 @@ void displayReservationToFile(struct Reservation **head, int cnt)
 
     while (curr != NULL)
     {
-        fprintf(outfile, "%d,%s,%d,%d,%f,%s\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
+        fprintf(outfile, "%d,%s,%d,%d,%s,%f,%s\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->end_date, curr->price, curr->vehicle_plate_number);
         printf("Added to file.\n");
         curr = curr->next;
     }
@@ -182,7 +182,7 @@ int addReservationFromFile(struct Reservation **head, struct Reservation **tail)
     for (int i = 0; i < cnt; i++)
     {
         curr = (struct Reservation *)malloc(sizeof(struct Reservation));
-        fscanf(infile, "%d,%10[^,],%d,%d,%f,%9[^,]\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, &curr->price, curr->vehicle_plate_number);
+        fscanf(infile, "%d,%10[^,],%d,%d,%10[^,],%f,%9[^,]\n", &curr->ID, curr->date, &curr->client_ID, &curr->days, curr->end_date, &curr->price, curr->vehicle_plate_number);
         curr->next = NULL;
         if (*head == NULL)
         {

@@ -133,7 +133,7 @@ void addNewClient(struct Client **head)
 }
 
 // Hedije Jazaj
-int addReservation(struct Reservation **head, struct Client **headClient, struct Client **tailClient, struct Vehicle **headVehicle)
+int addReservation(struct Reservation **head, struct Client **headClient, struct Client **tailClient, struct Vehicle **headVehicle, char *curr_date)
 {
     // Create a new Reservation node
     char temp;
@@ -177,11 +177,14 @@ int addReservation(struct Reservation **head, struct Client **headClient, struct
                         currV->availability = 'b';
                         currV->nr_of_reservations++;
 
-                        printf("Enter the reservation date dd/mm/yyyy: ");
-                        scanf("%s", newReservation->date);
+                        printf("The reservation date is: %s \n", curr_date);
+                        strcpy(newReservation->date,curr_date);
 
                         printf("Enter how many days will the vehicle be rented: ");
                         scanf("%d", &newReservation->days);
+
+                        printf("Enter the return date in the format type dd/mm/yyyy: ");
+                        scanf("%s", newReservation->end_date);
 
                         newReservation->price = newReservation->days * currV->price;
                         printf("The price for the reservation is: $%.2f", newReservation->price);

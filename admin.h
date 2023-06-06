@@ -3,29 +3,29 @@
 
 #include <unistd.h>
 
-void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC, struct Client **tailC, struct Reservation **headR, struct Reservation **tailR, int *cntV, int *cntC, int *cntR)
+void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC, struct Client **tailC, struct Reservation **headR, struct Reservation **tailR, int *cntV, int *cntC, int *cntR, char *current_date)
 {
     int a;
     while (1)
     {
-        fg_color(13);
-        printf("\n  1. Display all vehicle information.\
-\n  2. Display available vehicles currently.\
-\n  3. Display vehicles that will be available after x days.\
-\n  4. Create a new reservation.\
-\n  5. Add a new vehicle.\
-\n  6. Search for a vehicle using the license plate number.\
-\n  7. Sort and display all vehicles according to their daily rental price.\
-\n  8. Display the top 3 most reserved vehicles.\
-\n  9. Display all reservations.\
-\n  10. Remove a vehicle. (delete)\
-\n  11. Cancel a reservation. (delete)\
-\n  12. Display the name, surname and Client ID of all clients who have rented a vehicle (not necessarily the same) more than 3 times.\
-\n  13. Save all reservations with a total cost exceeding x to a new file.\
-\n  14. Modify information for a vehicle using its plate number.\
-\n  15. Add new client.\
-\n  16. Show all clients.\
-\n  0. Exit the program.\n");
+        fg_color(15);
+        printf("\n   1. Display all vehicle information.\
+\n   2. Display available vehicles currently.\
+\n   3. Display vehicles that will be available after x days.\
+\n   4. Create a new reservation.\
+\n   5. Add a new vehicle.\
+\n   6. Search for a vehicle using the license plate number.\
+\n   7. Sort and display all vehicles according to their daily rental price.\
+\n   8. Display the top 3 most reserved vehicles.\
+\n   9. Display all reservations.\
+\n   10. Remove a vehicle. (delete)\
+\n   11. Cancel a reservation. (delete)\
+\n   12. Display the name, surname and Client ID of all clients who have rented a vehicle (not necessarily the same) more than 3 times.\
+\n   13. Save all reservations with a total cost exceeding x to a new file.\
+\n   14. Modify information for a vehicle using its plate number.\
+\n   15. Add new client.\
+\n   16. Show all clients.\
+\n   0. Exit the program.\n");
         fg_color(0);
         fg_color(12);
         printf("Please choose one of the above options:\n");
@@ -45,7 +45,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             availableVehiclesAfterXDays(*head);
             break;
         case 4:
-            a = addReservation(headR, headC, tailC, head);
+            a = addReservation(headR, headC, tailC, head, current_date);
             if (a == 1)
             {
                 *cntR = *cntR + 1;
@@ -94,16 +94,16 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
         case -1:
             break;
         case 0:
-            fg_color(15);
+            fg_color(15); 
             printf("Exiting the program...\n");
             printf("Saving data to files...\n");
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 25; i++)
             {
                 fg_color(2);
                 printf("▓");
                 fg_color(0);
                 fflush(stdout);
-                usleep(50000); // Sleep for 50 milliseconds
+                usleep(45000); // delay in microseconds
             }
             fg_color(2);
             printf(" 100%%\n");
