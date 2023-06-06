@@ -1,24 +1,24 @@
 #ifndef delete_h
 #define delete_h
 // hedije jazaj
-// hedije jazaj
 
 void deleteReservation(struct Reservation **head)
 {
-    char vehicle_plate_number[10];
+    char vehicle_plate_number[10],temp;
     struct Reservation *current = *head;
     struct Reservation *prev = NULL;
 
     if (*head == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("There are no reservations to delete.\n\n");
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
 
     printf("Enter the vehicle Plate Number of the Reservation you want to delete: ");
-    scanf("%s", vehicle_plate_number);
+    scanf("%c", &temp); // temp statement to clear buffer
+    scanf("%[^\n]", vehicle_plate_number);
 
     while (current != NULL && strcmp(current->vehicle_plate_number, vehicle_plate_number) != 0)
     {
@@ -28,9 +28,9 @@ void deleteReservation(struct Reservation **head)
 
     if (current == NULL)
     {
-        helper_fg_color(1);
+        fg_color(1);
         printf("There is no reservation for this vehicle with Plate Number %s \n\n", vehicle_plate_number);
-        helper_fg_color(0);
+        fg_color(0);
         return;
     }
 
@@ -44,16 +44,16 @@ void deleteReservation(struct Reservation **head)
     }
 
     free(current);
-    helper_fg_color(2);
+    fg_color(2);
     printf("Reservation of vehicle with plate number %s is deleted.\n\n", vehicle_plate_number);
-    helper_fg_color(0);
+    fg_color(0);
 }
 
 
 // Arlind Alliu
 void removeVehicle(struct Vehicle **head)
 {
-    char vehicleplate_number[10];
+    char vehicleplate_number[10],temp;
     struct Vehicle *current = *head;
     struct Vehicle *prev = NULL;
 
@@ -66,7 +66,8 @@ void removeVehicle(struct Vehicle **head)
     }
 
     printf("Enter the vehicle Plate Number you want to delete: ");
-    scanf("%s", vehicleplate_number);
+    scanf("%c", &temp); // temp statement to clear buffer
+    scanf("%[^\n]", vehicleplate_number);
 
     while (current != NULL && strcmp(current->plate_number, vehicleplate_number) != 0)
     {
