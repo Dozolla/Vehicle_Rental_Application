@@ -26,7 +26,7 @@ void addVehicle(struct Vehicle **head)
     scanf("%d", &(newVehicle->year));
     while (1)
     {
-        if (newVehicle->year < 1920 || newVehicle->year > 2023)
+        if (newVehicle->year < 1900 || newVehicle->year > 2023)
         {
             fg_color(1);
             printf("Invalid year inputed.\n");

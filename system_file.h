@@ -22,7 +22,7 @@ void displayClientToFile(struct Client **head, int cnt)
     while (curr != NULL)
     {
         fprintf(outfile, "%d,%s,%s,%s,%s,%s,%d\n", curr->ID, curr->name, curr->surname, curr->passport_ID, curr->State, curr->phoneNumber, curr->nr_of_reservations);
-        // printf("Added to file.\n");
+        //printf("Added to file.\n");
         curr = curr->next;
     }
 

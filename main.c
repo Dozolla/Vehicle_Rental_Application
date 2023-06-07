@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 #include <math.h>
-#include <limits.h>
 #include <time.h>
-#include <errno.h>
 
+// header files for functions
 #include "color.h"
 #include "structures.h"
 #include "system_file.h"
@@ -32,11 +30,11 @@ int main()
 
     bg_color(7);
     fg_color(13);
-    printf("* * * * * * * * * * * * * * * * * * * * * * * * * * * *\n\
-*                                                     *\n\
-*          Welcome to the Car Rental System!          *\n\
-*                                                     *\n\
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+    printf("* * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
+    printf("*                                                     *\n");
+    printf("*          Welcome to the Car Rental System!          *\n");
+    printf("*                                                     *\n");
+    printf("* * * * * * * * * * * * * * * * * * * * * * * * * * * *");
     fg_color(0);
     bg_color(0);
 
@@ -46,16 +44,16 @@ int main()
     struct tm *time_ptr;
     time_ptr = localtime(&raw);
 
-    fg_color(16);
     char *current_date = malloc(20 * sizeof(char));
     // char current_time [20];
     strftime(current_date, 20, "%d/%m/%Y", time_ptr);
     // strftime(current_time, sizeof(current_time), "%H:%M:%S", time_ptr);
+    fg_color(11);
     printf("\n\nToday's date is: %s", current_date);
     fg_color(0);
     printf("\n\n");
 
-    //below is to check if the current date is the same as the end date of a reservation therefore make the vehicle is available if true
+    // below is to check if the current date is the same as the end date of a reservation therefore make the vehicle is available if true
     struct Reservation *current = rhead;
     struct Vehicle *currentV = vhead;
     if (current != NULL)

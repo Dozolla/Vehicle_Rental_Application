@@ -1,10 +1,10 @@
 #ifndef delete_h
 #define delete_h
-// hedije jazaj
+// Hedije Jazaj
 
 void deleteReservation(struct Reservation **head)
 {
-    char vehicle_plate_number[10],temp;
+    int resID;
     struct Reservation *current = *head;
     struct Reservation *prev = NULL;
 
@@ -16,11 +16,11 @@ void deleteReservation(struct Reservation **head)
         return;
     }
 
-    printf("Enter the vehicle Plate Number of the Reservation you want to delete: ");
-    scanf("%c", &temp); // temp statement to clear buffer
-    scanf("%[^\n]", vehicle_plate_number);
+    printf("Enter the Reservation ID of the Reservation you want to delete: ");
 
-    while (current != NULL && strcmp(current->vehicle_plate_number, vehicle_plate_number) != 0)
+    scanf("%d", &resID);
+
+    while (current != NULL && current->ID != resID)
     {
         prev = current;
         current = current->next;
@@ -29,7 +29,7 @@ void deleteReservation(struct Reservation **head)
     if (current == NULL)
     {
         fg_color(1);
-        printf("There is no reservation for this vehicle with Plate Number %s \n\n", vehicle_plate_number);
+        printf("There is no reservation for this vehicle with Reservation ID %d \n\n", resID);
         fg_color(0);
         return;
     }
@@ -45,7 +45,7 @@ void deleteReservation(struct Reservation **head)
 
     free(current);
     fg_color(2);
-    printf("Reservation of vehicle with plate number %s is deleted.\n\n", vehicle_plate_number);
+    printf("Reservation with ID %d is deleted.\n\n", resID);
     fg_color(0);
 }
 

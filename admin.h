@@ -17,8 +17,8 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
 \n   7. Sort and display all vehicles according to their daily rental price.\
 \n   8. Display the top 3 most reserved vehicles.\
 \n   9. Display all reservations.\
-\n   10. Remove a vehicle. (delete)\
-\n   11. Cancel a reservation. (delete)\
+\n   10. Remove a vehicle. \
+\n   11. Cancel a reservation. \
 \n   12. Display the name, surname and Client ID of all clients who have rented a vehicle (not necessarily the same) more than 3 times.\
 \n   13. Save all reservations with a total cost exceeding x to a new file.\
 \n   14. Modify information for a vehicle using its plate number.\
@@ -75,7 +75,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             break;
         case 11:
             deleteReservation(headR);
-            //*cntR = *cntR - 1;
+            *cntR = *cntR - 1;
             break;
         case 12:
             client_rent_more_than_3_times(*headC);

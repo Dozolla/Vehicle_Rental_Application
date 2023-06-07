@@ -16,11 +16,9 @@ void displayAllVehicles(struct Vehicle *head)
         printf("All Vehicles Information\n");
         fg_color(0);
     }
-    int vehicleCount = 0;
     struct Vehicle *current = head;
     while (current != NULL)
     {
-        vehicleCount++;
         fg_color(6);
         printf("\nPlate Number: %s\n", current->plate_number);
         printf("Year: %d\n", current->year);
@@ -35,6 +33,7 @@ void displayAllVehicles(struct Vehicle *head)
 
         current = current->next;
     }
+
 }
 // Arlind Alliu
 void availableVehicles(struct Vehicle *head)
@@ -43,7 +42,7 @@ void availableVehicles(struct Vehicle *head)
     if (head == NULL)
     {
         fg_color(1);
-        printf("There are no vehicles available.\n\n");
+        printf("There are no vehicles in the database.\n\n");
         fg_color(0);
         return;
     }
@@ -52,6 +51,7 @@ void availableVehicles(struct Vehicle *head)
     printf("Available Vehicles are:\n");
     fg_color(0);
     struct Vehicle *current = head;
+    int vehicle_count = 0;
     while (current != NULL)
     {
         if (current->availability == 'a')
@@ -68,8 +68,12 @@ void availableVehicles(struct Vehicle *head)
             printf("Daily Price: %.2f\n", current->price);
             fg_color(0);
             printf("\n");
+            vehicle_count++;
         }
         current = current->next;
+        if(vehicle_count==0){
+            printf("There are no available vehicles at the moment.\n");
+        }
     }
 
     printf("\n");
@@ -84,7 +88,7 @@ void availableVehiclesAfterXDays(struct Vehicle *head)
 void searchVehiclePLATE(struct Vehicle *head)
 {
     char temp, plate[20];
-    scanf("%c", &temp);
+    scanf("%c", &temp);//to clear the buffer
     printf("Enter the plate number: ");
     scanf("%[^\n]", plate);
 
@@ -149,6 +153,7 @@ void top3Vehicles(struct Vehicle *head)
     {
         if (number_of_res[i] != NULL)
         {
+            fg_color(6);
             printf("\nPlate Number: %s\n", number_of_res[i]->plate_number);
             printf("Year: %d\n", number_of_res[i]->year);
             printf("Brand: %s\n", number_of_res[i]->brand);
@@ -159,6 +164,7 @@ void top3Vehicles(struct Vehicle *head)
             printf("Number of Seats: %d\n", number_of_res[i]->seats);
             printf("Daily Price: %.2f\n", number_of_res[i]->price);
             printf("\n");
+            fg_color(0);
         }
     }
 }
@@ -189,6 +195,7 @@ void displayAllReservations(struct Reservation *head)
         printf("Date %s\n", current->date);
         printf("Client ID: %d\n", current->client_ID);
         printf("Number of Days: %d\n", current->days);
+        printf("End Date: %s\n", current->end_date);
         printf("Price: %.2f\n", current->price);
         printf("Vehicle Plate Number: %s\n", current->vehicle_plate_number);
         fg_color(0);
@@ -197,6 +204,7 @@ void displayAllReservations(struct Reservation *head)
     }
 }
 
+//Arlind Alliu
 void client_rent_more_than_3_times(struct Client *head)
 {
     int cnt = 0;
