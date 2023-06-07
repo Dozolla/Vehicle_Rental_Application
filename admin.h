@@ -43,7 +43,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             availableVehicles(*head);
             break;
         case 3:
-            availableVehiclesAfterXDays(*head);
+            availableVehiclesAfterXDays(head, headR);
             break;
         case 4:
             a = addReservation(headR, headC, tailC, head, current_date);

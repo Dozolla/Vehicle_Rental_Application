@@ -56,23 +56,33 @@ int main()
     // below is to check if the current date is the same as the end date of a reservation therefore make the vehicle is available if true
     struct Reservation *current = rhead;
     struct Vehicle *currentV = vhead;
-    if (current != NULL)
+
+    while (current != NULL)
     {
-        while (current != NULL)
+        struct tm date;
+        sscanf(current->end_date, "%d/%d/%d", &date.tm_mday, &date.tm_mon, &date.tm_year);
+        date.tm_mon -= 1;
+        date.tm_year -= 1900;
+        date.tm_hour = 12; // midday
+        date.tm_min = 0;
+        date.tm_sec = 0;
+        time_t endDate = mktime(&date);
+        time_t now = time(NULL);
+
+        printf("%ld\n", endDate);
+        printf("%ld\n", now);
+        if (endDate <= now && strcmp(current->end_date, current_date) == 0)
         {
-            if (strcmp(current->end_date, current_date) == 0)
+            while (currentV != NULL)
             {
-                while (currentV != NULL)
+                if (strcmp(current->vehicle_plate_number, currentV->plate_number) == 0)
                 {
-                    if (strcmp(current->vehicle_plate_number, currentV->plate_number) == 0)
-                    {
-                        currentV->availability = 'a';
-                    }
-                    currentV = currentV->next;
+                    currentV->availability = 'a';
                 }
+                currentV = currentV->next;
             }
-            current = current->next;
         }
+        current = current->next;
     }
     Options(&vhead, &vtail, &chead, &ctail, &rhead, &rtail, &vcnt, &ccnt, &rcnt, current_date);
 

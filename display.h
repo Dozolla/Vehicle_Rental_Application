@@ -33,7 +33,6 @@ void displayAllVehicles(struct Vehicle *head)
 
         current = current->next;
     }
-
 }
 // Arlind Alliu
 void availableVehicles(struct Vehicle *head)
@@ -71,7 +70,8 @@ void availableVehicles(struct Vehicle *head)
             vehicle_count++;
         }
         current = current->next;
-        if(vehicle_count==0){
+        if (vehicle_count == 0)
+        {
             printf("There are no available vehicles at the moment.\n");
         }
     }
@@ -79,16 +79,89 @@ void availableVehicles(struct Vehicle *head)
     printf("\n");
 }
 
-void availableVehiclesAfterXDays(struct Vehicle *head)
+void availableVehiclesAfterXDays(struct Vehicle **head, struct Reservation **headR)
 {
-    printf("Not implemented.\n");
+    int x, day, month, year;
+    if (head == NULL)
+    {
+        fg_color(1);
+        printf("There are no vehicles in the database.\n\n");
+        fg_color(0);
+        return;
+    }
+
+    struct Vehicle *current = *head;
+    struct Reservation *currentR = *headR;
+
+    int vehicle_count = 0;
+    while (current != NULL)
+    {
+        if (current->availability == 'b')
+        {
+            currentR = *headR;
+            while (currentR != NULL)
+            {
+                if (strcmp(currentR->vehicle_plate_number, current->plate_number) == 0)
+                {
+                    struct tm date;
+                    sscanf(currentR->end_date, "%d/%d/%d", &date.tm_mday, &date.tm_mon, &date.tm_year);
+                    date.tm_mon -= 1;
+                    date.tm_year -= 1900;
+                    date.tm_hour = 12; // midday
+                    date.tm_min = 0;
+                    date.tm_sec = 0;
+                    time_t endDate = mktime(&date);
+                    if (endDate == -1)
+                    {
+                        fg_color(1);
+                        printf("Error in date format.\n");
+                        fg_color(0);
+                        return;
+                    }
+                    time_t now = time(NULL);
+                    time_t xdayslater = endDate - now;
+
+                    if (endDate > now)
+                    {
+                        x = xdayslater / (60 * 60 * 24);
+
+                        fg_color(6);
+                        printf("\nPlate Number: %s\n", current->plate_number);
+                        printf("Year: %d\n", current->year);
+                        printf("Brand: %s\n", current->brand);
+                        printf("Model: %s\n", current->model);
+                        printf("Color: %s\n", current->color);
+                        printf("Fuel Type: %s\n", current->fuel_type);
+                        printf("Fuel Consumption: %.2f liters/km\n", current->consumption);
+                        printf("Number of Seats: %d\n", current->seats);
+                        printf("Daily Price: %.2f\n", current->price);
+                        fg_color(0);
+
+                        fg_color(15);
+                        if (x == 0)
+                            printf("This vehicle will be available in less than a day.\n\n");
+                        else
+                            printf("This vehicle is available after %d days.\n\n", x);
+                        fg_color(0);
+                        vehicle_count++;
+                    }
+                }
+                currentR = currentR->next;
+            }
+        }
+        current = current->next;
+    }
+    if (vehicle_count == 0)
+    {
+        printf("There are no available vehicles at the moment.\n");
+    }
 }
 
 // Arlind Alliu
 void searchVehiclePLATE(struct Vehicle *head)
 {
     char temp, plate[20];
-    scanf("%c", &temp);//to clear the buffer
+    scanf("%c", &temp); // to clear the buffer
     printf("Enter the plate number: ");
     scanf("%[^\n]", plate);
 
@@ -204,7 +277,7 @@ void displayAllReservations(struct Reservation *head)
     }
 }
 
-//Arlind Alliu
+// Arlind Alliu
 void client_rent_more_than_3_times(struct Client *head)
 {
     int cnt = 0;
