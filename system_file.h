@@ -216,8 +216,8 @@ void displaySpecialReservationToFile(struct Reservation **head){
     while (curr != NULL)
     {
         if(curr->price > price){
-        fprintf(outfile, "%d,%s,%d,%d,%f,%s\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->price, curr->vehicle_plate_number);
-        printf("Added to file.\n");
+        fprintf(outfile, "%d,%s,%d,%d,%s,%f,%s\n", curr->ID, curr->date, curr->client_ID, curr->days, curr->end_date, curr->price, curr->vehicle_plate_number);
+        printf("Reservation added to file.\n");
         }
         curr = curr->next;
     }

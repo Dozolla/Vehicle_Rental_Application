@@ -80,7 +80,6 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             break;
         case 13:
             displaySpecialReservationToFile(headR);
-            // what do we do with this?
             break;
         case 14:
             modifyVehicle(head);
