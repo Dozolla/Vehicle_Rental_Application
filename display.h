@@ -248,11 +248,11 @@ void displayAllClients(struct Client *head)
         fg_color(6);
         printf("\nClient ID: %d\n", current->ID);
         printf("Client name: %s\n", current->name);
-        printf("Client surname %s\n", current->surname);
-        printf("Passport ID %s\n", current->passport_ID);
-        printf("State %s\n", current->State);
-        printf("Phone number %s\n", current->phoneNumber);
-        printf("Number of reservations %d\n", current->nr_of_reservations);
+        printf("Client surname: %s\n", current->surname);
+        printf("Passport ID: %s\n", current->passport_ID);
+        printf("State: %s\n", current->State);
+        printf("Phone number: %s\n", current->phoneNumber);
+        printf("Number of reservations: %d\n", current->nr_of_reservations);
         fg_color(0);
 
         current = current->next;

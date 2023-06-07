@@ -7,9 +7,9 @@
 #include <time.h>
 #include <errno.h>
 
+#include "color.h"
 #include "structures.h"
 #include "system_file.h"
-#include "color.h"
 #include "create.h"
 #include "delete.h"
 #include "display.h"
