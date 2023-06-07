@@ -112,12 +112,58 @@ void searchVehiclePLATE(struct Vehicle *head)
     fg_color(0);
 }
 
+// Hedije Jazaj
 void top3Vehicles(struct Vehicle *head)
 {
-    printf("Not implemented.\n");
+    struct Vehicle *number_of_res[3] = {NULL, NULL, NULL};
+    struct Vehicle *current = head;
+
+    if (current == NULL)
+    {
+        fg_color(1);
+        printf("No vehicles found.\n");
+        fg_color(0);
+        return;
+    }
+
+    while (current != NULL)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (number_of_res[i] == NULL || current->nr_of_reservations > number_of_res[i]->nr_of_reservations)
+            {
+                for (int j = 2; j > i; j--)
+                {
+                    number_of_res[j] = number_of_res[j - 1];
+                }
+                number_of_res[i] = current;
+                break;
+            }
+        }
+        current = current->next;
+    }
+    fg_color(16);
+    printf("Top Three Reserved Vehicles:\n");
+    fg_color(0);
+    for (int i = 0; i < 3; i++)
+    {
+        if (number_of_res[i] != NULL)
+        {
+            printf("\nPlate Number: %s\n", number_of_res[i]->plate_number);
+            printf("Year: %d\n", number_of_res[i]->year);
+            printf("Brand: %s\n", number_of_res[i]->brand);
+            printf("Model: %s\n", number_of_res[i]->model);
+            printf("Color: %s\n", number_of_res[i]->color);
+            printf("Fuel Type: %s\n", number_of_res[i]->fuel_type);
+            printf("Fuel Consumption: %.2f liters/km\n", number_of_res[i]->consumption);
+            printf("Number of Seats: %d\n", number_of_res[i]->seats);
+            printf("Daily Price: %.2f\n", number_of_res[i]->price);
+            printf("\n");
+        }
+    }
 }
 
-//Hedije Jazaj
+// Hedije Jazaj
 void displayAllReservations(struct Reservation *head)
 {
     if (head == NULL)
@@ -145,7 +191,7 @@ void displayAllReservations(struct Reservation *head)
         printf("Number of Days: %d\n", current->days);
         printf("Price: %.2f\n", current->price);
         printf("Vehicle Plate Number: %s\n", current->vehicle_plate_number);
-                fg_color(0);
+        fg_color(0);
 
         current = current->next;
     }
@@ -178,10 +224,10 @@ void client_rent_more_than_3_times(struct Client *head)
     }
 }
 
-//Hedije Jazaj
+// Hedije Jazaj
 void displayAllClients(struct Client *head)
 {
-   if (head == NULL)
+    if (head == NULL)
     {
         fg_color(1);
         printf("No clients found.\n");
@@ -212,6 +258,5 @@ void displayAllClients(struct Client *head)
         current = current->next;
     }
 }
-
 
 #endif /* display.h */
