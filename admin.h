@@ -6,10 +6,9 @@
 void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC, struct Client **tailC, struct Reservation **headR, struct Reservation **tailR, int *cntV, int *cntC, int *cntR, char *current_date)
 {
     int a;
-    while (1)
-    {
-        fg_color(15);
-        printf("\n   1. Display all vehicle information.\
+
+    fg_color(16);
+    printf("\n   1. Display all vehicle information.\
 \n   2. Display available vehicles currently.\
 \n   3. Display vehicles that will be available after x days.\
 \n   4. Create a new reservation.\
@@ -26,9 +25,11 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
 \n   15. Add new client.\
 \n   16. Show all clients.\
 \n   0. Exit the program.\n");
-        fg_color(0);
+    fg_color(0);
+    while (1)
+    {
         fg_color(12);
-        printf("Please choose one of the above options:\n");
+        printf("\nPlease choose one of the above options:\n");
         int option;
         printf("~ ");
         scanf("%d", &option);
@@ -60,6 +61,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
             break;
         case 7:
             sortVehiclesByPrice(head);
+            displayAllVehicles(*head);
             break;
         case 8:
             top3Vehicles(*head);
@@ -93,7 +95,7 @@ void Options(struct Vehicle **head, struct Vehicle **tail, struct Client **headC
         case -1:
             break;
         case 0:
-            fg_color(15); 
+            fg_color(15);
             printf("Exiting the program...\n");
             printf("Saving data to files...\n");
             for (int i = 0; i < 25; i++)
