@@ -153,7 +153,7 @@ void availableVehiclesAfterXDays(struct Vehicle **head, struct Reservation **hea
     }
     if (vehicle_count == 0)
     {
-        printf("There are no available vehicles at the moment.\n");
+        printf("All vehicles are available.\n");
     }
 }
 
