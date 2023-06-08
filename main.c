@@ -69,8 +69,6 @@ int main()
         time_t endDate = mktime(&date);
         time_t now = time(NULL);
 
-        printf("%ld\n", endDate);
-        printf("%ld\n", now);
         if (endDate <= now && strcmp(current->end_date, current_date) == 0)
         {
             while (currentV != NULL)
