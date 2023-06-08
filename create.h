@@ -90,6 +90,7 @@ void addVehicle(struct Vehicle **head)
     fg_color(0);
 }
 
+//Hedije Jazaj
 void addNewClient(struct Client **head)
 {
     struct Client *newClient = (struct Client *)malloc(sizeof(struct Client));
