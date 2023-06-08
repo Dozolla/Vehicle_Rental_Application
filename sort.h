@@ -22,6 +22,7 @@ void sortVehiclesByPrice(struct Vehicle **head)
     float tempConsumption;
     int tempSeats;
     char tempAvailability;
+    int tempnr_of_reservations;
     while (current != NULL)
     {
         index = current->next;
@@ -68,6 +69,10 @@ void sortVehiclesByPrice(struct Vehicle **head)
                 tempAvailability = current->availability;
                 current->availability = index->availability;
                 index->availability = tempAvailability;
+
+                tempnr_of_reservations = current->nr_of_reservations;
+                current->nr_of_reservations = index->nr_of_reservations;
+                index->nr_of_reservations = tempnr_of_reservations;
             }
             index = index->next;
         }

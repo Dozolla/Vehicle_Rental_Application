@@ -281,7 +281,9 @@ void displayAllReservations(struct Reservation *head)
 void client_rent_more_than_3_times(struct Client *head)
 {
     int cnt = 0;
+    fg_color(16);
     printf("Clients with more than 3 rentals are: \n");
+    fg_color(0);
     struct Client *current = head;
 
     while (current != NULL)
