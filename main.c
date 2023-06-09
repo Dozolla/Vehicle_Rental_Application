@@ -69,7 +69,7 @@ int main()
         time_t endDate = mktime(&date);
         time_t now = time(NULL);
 
-        if (endDate <= now && strcmp(current->end_date, current_date) == 0)//pragarm is supposed to open everyday
+        if (endDate <= now && strcmp(current->end_date, current_date) == 0)//pragarm is supposed to restart everyday at 12pm
         {
             while (currentV != NULL)
             {

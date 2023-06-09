@@ -34,11 +34,11 @@ void deleteReservation(struct Reservation **head)
         return;
     }
 
-    if (prev == NULL)
+    if (prev == NULL) //if the vehicle is the first one in the list
     {
         *head = current->next;
     }
-    else
+    else //if the vehicle is not the first one in the list
     {
         prev->next = current->next;
     }
@@ -83,11 +83,11 @@ void removeVehicle(struct Vehicle **head)
         return;
     }
 
-    if (prev == NULL)
+    if (prev == NULL) //if the vehicle is the first one in the list
     {
         *head = current->next;
     }
-    else
+    else //if the vehicle is not the first one in the list
     {
         prev->next = current->next;
     }

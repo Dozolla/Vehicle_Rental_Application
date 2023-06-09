@@ -70,12 +70,11 @@ void availableVehicles(struct Vehicle *head)
             vehicle_count++;
         }
         current = current->next;
-        if (vehicle_count == 0)
-        {
-            printf("There are no available vehicles at the moment.\n");
-        }
     }
-
+    if (vehicle_count == 0)
+    {
+        printf("There are no available vehicles at the moment.\n");
+    }
     printf("\n");
 }
 
